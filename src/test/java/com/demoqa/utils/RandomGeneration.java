@@ -1,11 +1,11 @@
 package com.demoqa.utils;
 
-import com.demoqa.data.*;
 import com.github.javafaker.Faker;
 
 import java.util.Locale;
 import java.util.Random;
 
+import static com.demoqa.utils.Variables.userBirthdayMonth;
 
 public class RandomGeneration {
     private static Faker faker = new Faker(new Locale("en"));
@@ -19,7 +19,8 @@ public class RandomGeneration {
         return faker.internet().emailAddress();
     }
     public static String getUserGender() {
-        return Gender.values()[new Random().nextInt(Gender.values().length)].getTitle();
+        String [] gender = {"Male", "Female", "Other"};
+        return new Faker().options().option(gender);
     }
     public static String getUserNumber() {
         return faker.numerify("##########");
@@ -28,11 +29,21 @@ public class RandomGeneration {
         return new Faker().random().nextInt(1943, 2005).toString();
     }
     public static String getBirthMonth() {
-        return Month.values()[new Random().nextInt(Month.values().length)].getTitle();
+        String [] month = {"January", "February", "March", "April", "May", "June", "July", "August", "September",
+        "October","November", "December"};
+        return new Faker().options().option(month);
     }
     public static String getBirthDay() {
         Random rnd = new Random();
-        int day = rnd.nextInt(1,28);
+        int day;
+        switch (userBirthdayMonth) {
+            case "January","March", "May", "July", "August", "October", "December": day = rnd.nextInt(1,31);
+                break;
+            case "February": day = rnd.nextInt(1,28);
+                break;
+            case"April", "June","September", "November" :  day = rnd.nextInt(1,30);
+                break;
+            default : day = 1;}
         if (day < 10) {
             return "0" + day;
         } else {
@@ -40,31 +51,38 @@ public class RandomGeneration {
         }
     }
     public static String getUserSubject() {
-        return Subject.values()[new Random().nextInt(Subject.values().length)].getTitle();
+        String [] subject = {"English", "Chemistry","Computer Science", "Commerce", "Economics", "Social Studies",
+                            "Arts", "History","Maths", "Accounting", "Physics", "Biology", "Hindi", "Civivs"};
+        return new Faker().options().option(subject);
     }
     public static String getUserHobby() {
-        return Hobby.values()[new Random().nextInt(Hobby.values().length)].getTitle();
+        String [] hobby = {"Sports", "Reading", "Music"};
+        return new Faker().options().option(hobby);
     }
     public static String getUserAddress() {
         return faker.address().fullAddress();
     }
     public static String getUserState() {
-        String userState = State.values()[new Random().nextInt(State.values().length)].getTitle();
-        return userState;
+        String [] userState = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
+        return new Faker().options().option(userState);
     }
     public static String getUserCity(String state) {
         switch (state) {
             case "NCR": {
-                return NCRCity.values()[new Random().nextInt(NCRCity.values().length)].getTitle();
+                String [] ncrCity = {"Delhi", "Gurgaon", "Noida"};
+                return new Faker().options().option(ncrCity);
             }
             case "Uttar Pradesh": {
-                return UttarPradeshCity.values()[new Random().nextInt(UttarPradeshCity.values().length)].getTitle();
+                String [] uttarPradeshCity = {"Agra", "Lucknow", "Merrut"};
+                return new Faker().options().option(uttarPradeshCity);
             }
             case "Haryana": {
-                return HaryanaCity.values()[new Random().nextInt(HaryanaCity.values().length)].getTitle();
-            }
+                String [] haryanaCity = {"Karnal", "Panipat"};
+                return new Faker().options().option(haryanaCity);
+                }
             case "Rajasthan": {
-                return RajasthanCity.values()[new Random().nextInt(RajasthanCity.values().length)].getTitle();
+                String [] rajasthanCity = {"Jaipur", "Jaiselmer"};
+                return new Faker().options().option(rajasthanCity);
             }
         }
         return null;
