@@ -2,7 +2,6 @@ package com.demoqa.tests;
 
 import com.demoqa.pages.RegistrationPage;
 import com.demoqa.pages.ResultPage;
-import com.demoqa.utils.RandomGeneration;
 import com.demoqa.utils.Variables;
 import org.junit.jupiter.api.Test;
 
