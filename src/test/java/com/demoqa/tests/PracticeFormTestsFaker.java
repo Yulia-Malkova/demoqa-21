@@ -1,32 +1,39 @@
 package com.demoqa.tests;
 
 import com.demoqa.pages.RegistrationPage;
+import com.demoqa.pages.ResultPage;
+import com.demoqa.utils.RandomGeneration;
+import com.demoqa.utils.Variables;
 import org.junit.jupiter.api.Test;
 
-import static com.demoqa.utils.Variables.*;
-
 public class PracticeFormTestsFaker extends TestBase {
+
     RegistrationPage registrationPage = new RegistrationPage();
+    ResultPage resultPage = new ResultPage();
+    RandomGeneration randomGeneration = new RandomGeneration();
+    Variables variables = new Variables();
+
     @Test
     void fillFormTest() {
         registrationPage
                 .openPage()
                 .removeBanner()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(userEmail)
-                .setGender(userGender)
-                .setUserNumber(userNumber)
-                .setBirthDate(userBirthDay,userBirthdayMonth,userBirthdayYear)
-                .setSubjects(userSubject)
-                .setHobbies(userHobby)
-                .setAddress(userAddress)
+                .setFirstName(variables.userFirstName)
+                .setLastName(variables.userLastName)
+                .setEmail(variables.userEmail)
+                .setGender(variables.userGender)
+                .setUserNumber(variables.userNumber)
+                .setBirthDate(variables.userBirthDay, variables.userBirthdayMonth, variables.userBirthdayYear)
+                .setSubjects(variables.userSubject)
+                .setHobbies(variables.userHobby)
+                .setAddress(variables.userAddress)
                 .uploadFile("photo.jpeg")
-                .selectState(userState)
-                .selectCity(userCity)
-                .submitInformation()
-                .checkResult(userFullName,userEmail, userGender, userNumber,  userFullBirthday,
-                        userSubject, userHobby,"photo.jpeg", userAddress, userStateCity);
+                .selectState(variables.userState)
+                .selectCity(variables.userCity)
+                .submitInformation();
 
+        resultPage
+                .checkResult(variables.userFullName, variables.userEmail, variables.userGender, variables.userNumber,  variables.userFullBirthday,
+                    variables.userSubject, variables.userHobby,"photo.jpeg", variables.userAddress, variables.userStateCity);
     }
 }

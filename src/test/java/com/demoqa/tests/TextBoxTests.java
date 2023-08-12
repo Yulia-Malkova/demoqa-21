@@ -4,7 +4,9 @@ import com.demoqa.pages.TextBoxPage;
 import org.junit.jupiter.api.Test;
 
 public class TextBoxTests extends TestBase {
+
     TextBoxPage textBoxPage = new TextBoxPage();
+
     @Test
     void fillFormTest() {
         textBoxPage
@@ -15,6 +17,5 @@ public class TextBoxTests extends TestBase {
                 .setPermanentAddress("Random address 2")
                 .submitInformation()
                 .check("Julia Malkova","jm@test.ru","Random address","Random address 2");
-
     }
 }

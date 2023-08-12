@@ -1,10 +1,14 @@
 package com.demoqa.tests;
 
 import com.demoqa.pages.RegistrationPage;
+import com.demoqa.pages.ResultPage;
 import org.junit.jupiter.api.Test;
 
 public class PracticeFormTestsPageObjects extends TestBase {
+
     RegistrationPage registrationPage = new RegistrationPage();
+    ResultPage resultPage = new ResultPage();
+
     @Test
     void fillFormTest() {
         registrationPage
@@ -22,9 +26,10 @@ public class PracticeFormTestsPageObjects extends TestBase {
                 .uploadFile("photo.jpeg")
                 .selectState("Haryana")
                 .selectCity("Karnal")
-                .submitInformation()
+                .submitInformation();
+
+        resultPage
                 .checkResult("John Lennon","beatles@liverpool.com", "Male", "4412345678", "09 October,1940",
                         "Arts", "Music","photo.jpeg", "Central Park", "Haryana Karnal");
-
     }
 }

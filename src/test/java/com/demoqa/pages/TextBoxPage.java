@@ -6,11 +6,12 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TextBoxPage {
-    SelenideElement
-    userName = $("#userName"),
-    userEmail = $("#userEmail"),
-    userCurrentAddress = $("#currentAddress"),
-    userPermanentAddress =$("#permanentAddress"),
+
+    private SelenideElement
+    userNameInput = $("#userName"),
+    userEmailInput = $("#userEmail"),
+    userCurrentAddressInput = $("#currentAddress"),
+    userPermanentAddressInput =$("#permanentAddress"),
     submitButton = $("#submit"),
     nameOutput = $("#output #name"),
     emailOutput = $("#output #email"),
@@ -21,26 +22,32 @@ public class TextBoxPage {
         open("/text-box");
         return this;
     }
+
     public TextBoxPage setUserName(String value){
-        userName.setValue(value);
+        userNameInput.setValue(value);
         return this;
     }
+
     public TextBoxPage setEmail(String value){
-        userEmail.setValue(value);
+        userEmailInput.setValue(value);
         return this;
     }
+
     public TextBoxPage setCurrentAddress(String value){
-        userCurrentAddress.setValue(value);
+        userCurrentAddressInput.setValue(value);
         return this;
     }
+
     public TextBoxPage setPermanentAddress(String value){
-        userPermanentAddress.setValue(value);
+        userPermanentAddressInput.setValue(value);
         return this;
     }
+
     public TextBoxPage submitInformation(){
        submitButton.click();
         return this;
     }
+
     public TextBoxPage check(String name, String email, String currentAddress, String permanentAddress){
         nameOutput.shouldHave(text(name));
         emailOutput.shouldHave(text(email));
@@ -49,4 +56,3 @@ public class TextBoxPage {
         return this;
     }
 }
-

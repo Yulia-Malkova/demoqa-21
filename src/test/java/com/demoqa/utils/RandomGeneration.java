@@ -2,71 +2,69 @@ package com.demoqa.utils;
 
 import com.github.javafaker.Faker;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
-import java.util.Random;
-
-import static com.demoqa.utils.Variables.userBirthdayMonth;
 
 public class RandomGeneration {
-    private static Faker faker = new Faker(new Locale("en"));
-    public static String getFirstName() {
+
+    Faker faker = new Faker();
+    Date userBirthday = faker.date().birthday(18,80);
+
+    public String getFirstName() {
         return faker.name().firstName();
     }
-    public static String getLastName() {
+
+    public String getLastName() {
         return faker.name().lastName();
     }
-    public static String getUserEmail() {
+
+    public String getUserEmail() {
         return faker.internet().emailAddress();
     }
-    public static String getUserGender() {
+
+    public String getUserGender() {
         String [] gender = {"Male", "Female", "Other"};
         return new Faker().options().option(gender);
     }
-    public static String getUserNumber() {
+
+    public String getUserNumber() {
         return faker.numerify("##########");
     }
-    public static String getBirthYear() {
-        return new Faker().random().nextInt(1943, 2005).toString();
+
+    public String getUserBirthDay() {
+        return (new SimpleDateFormat("dd", Locale.ENGLISH)).format(userBirthday);
     }
-    public static String getBirthMonth() {
-        String [] month = {"January", "February", "March", "April", "May", "June", "July", "August", "September",
-        "October","November", "December"};
-        return new Faker().options().option(month);
+
+    public String getUserBirthMonth() {
+        return (new SimpleDateFormat("MMMM", Locale.ENGLISH)).format(userBirthday);
     }
-    public static String getBirthDay() {
-        Random rnd = new Random();
-        int day;
-        switch (userBirthdayMonth) {
-            case "January","March", "May", "July", "August", "October", "December": day = rnd.nextInt(1,31);
-                break;
-            case "February": day = rnd.nextInt(1,28);
-                break;
-            case"April", "June","September", "November" :  day = rnd.nextInt(1,30);
-                break;
-            default : day = 1;}
-        if (day < 10) {
-            return "0" + day;
-        } else {
-            return Integer.toString(day);
-        }
+
+    public String getUserBirthYear() {
+        return (new SimpleDateFormat("y", Locale.ENGLISH)).format(userBirthday);
     }
-    public static String getUserSubject() {
+
+    public String getUserSubject() {
         String [] subject = {"English", "Chemistry","Computer Science", "Commerce", "Economics", "Social Studies",
-                            "Arts", "History","Maths", "Accounting", "Physics", "Biology", "Hindi", "Civivs"};
+                            "Arts", "History","Maths", "Accounting", "Physics", "Biology", "Hindi", "Civics"};
         return new Faker().options().option(subject);
     }
-    public static String getUserHobby() {
+
+    public String getUserHobby() {
         String [] hobby = {"Sports", "Reading", "Music"};
         return new Faker().options().option(hobby);
     }
-    public static String getUserAddress() {
+
+    public String getUserAddress() {
         return faker.address().fullAddress();
     }
-    public static String getUserState() {
+
+    public String getUserState() {
         String [] userState = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
         return new Faker().options().option(userState);
     }
-    public static String getUserCity(String state) {
+
+    public String getUserCity(String state) {
         switch (state) {
             case "NCR": {
                 String [] ncrCity = {"Delhi", "Gurgaon", "Noida"};
@@ -86,6 +84,5 @@ public class RandomGeneration {
             }
         }
         return null;
-
     }
 }

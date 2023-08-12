@@ -7,7 +7,6 @@ public class TableToCheck {
 
     public void compareTableResult(String name, String email, String gender, String phone, String birthDate, String subject,
                             String hobby, String fileName, String address, String stateCity){
-
         $("tbody tr:nth-child(1) td:nth-child(2)").shouldHave(text(name));
         $("tbody tr:nth-child(2) td:nth-child(2)").shouldHave(text(email));
         $("tbody tr:nth-child(3) td:nth-child(2)").shouldHave(text(gender));
