@@ -10,7 +10,6 @@ public class PracticeFormTestsFaker extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
     ResultPage resultPage = new ResultPage();
-    RandomGeneration randomGeneration = new RandomGeneration();
     Variables variables = new Variables();
 
     @Test
