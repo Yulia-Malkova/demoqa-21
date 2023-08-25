@@ -5,7 +5,7 @@ import com.demoqa.pages.ResultPage;
 import com.demoqa.utils.Variables;
 import org.junit.jupiter.api.Test;
 
-public class PracticeFormTestsFaker extends TestBase {
+public class PracticeFormTestsFaker extends RemoteTestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
     ResultPage resultPage = new ResultPage();

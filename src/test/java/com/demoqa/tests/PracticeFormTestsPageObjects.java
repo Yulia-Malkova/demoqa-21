@@ -4,7 +4,7 @@ import com.demoqa.pages.RegistrationPage;
 import com.demoqa.pages.ResultPage;
 import org.junit.jupiter.api.Test;
 
-public class PracticeFormTestsPageObjects extends TestBase {
+public class PracticeFormTestsPageObjects extends RemoteTestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
     ResultPage resultPage = new ResultPage();
