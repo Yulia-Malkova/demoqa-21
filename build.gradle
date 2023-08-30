@@ -23,6 +23,9 @@ allure {
         }
     }
 }
+tasks.withType(Test) {
+    systemProperties(System.getProperties())
+}
 
 dependencies {
     testImplementation(
