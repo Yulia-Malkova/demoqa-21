@@ -14,7 +14,6 @@ public class PracticeFormTestsPageObjects extends RemoteTestBase {
     ResultPage resultPage = new ResultPage();
 
     @Test
-    @Tag("remote")
     @DisplayName("Успешная регистрация при сабмите в форму авторизации - без генерации данных")
     void fillFormTest() {
         step("Открываем страницу с формой авторизации", () -> {
