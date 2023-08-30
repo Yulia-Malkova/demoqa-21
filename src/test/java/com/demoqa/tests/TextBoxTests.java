@@ -12,7 +12,6 @@ public class TextBoxTests extends RemoteTestBase {
     TextBoxPage textBoxPage = new TextBoxPage();
 
     @Test
-    @Tag("remote")
     @DisplayName("Успешная регистрация при сабмите в текстовую форму")
     void fillFormTest() {
         step("Открываем страницу с простой текстовой формой", () -> {
@@ -26,6 +25,7 @@ public class TextBoxTests extends RemoteTestBase {
                     .setCurrentAddress("Random address")
                     .setPermanentAddress("Random address 2");
         });
+
         step("Делаем сабмит", () -> {
             textBoxPage
                     .submitInformation();
